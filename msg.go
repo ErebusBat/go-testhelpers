@@ -25,8 +25,8 @@ func NotEqualMsg(expected, actual interface{}) string {
 
 // Same as NotEqualMsg, except that the type names will be printed instead
 func TypeNotEqualMsg(expected, actual interface{}) string {
-	eType := fmt.Sprintf("%T", expected)
-	aType := fmt.Sprintf("%T", actual)
+	eType := TypeName(expected)
+	aType := TypeName(actual)
 	return fmt.Sprintln(ES_EXPECTED, eType, ES_GOT, aType)
 }
 
