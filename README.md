@@ -1,8 +1,7 @@
 # go-testhelpers
-Simple methods, shortcuts, and patterns to fill in the gaps when working with go test.
+Simple methods, shortcuts, and patterns to fill in the gaps when working with go test.  The `testhelpers` library provides helper methods and patterns to easily provide clear and useful error messages without changing your testing methodology or practices.
 
 This package is not a testing framework or an assertion library. 
-Although you could probably use it with one.
 
 # Overview
 The draw for me to the testing frameworks/libraries was the nice output.
