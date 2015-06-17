@@ -6,7 +6,7 @@ import (
 	th "github.com/ErebusBat/go-testhelpers"
 )
 
-func TestNotEqual(t *testing.T) {
+func ExampleNotEqual(t *testing.T) {
 	expected := "The quick brown fox jumped over the lazy dog"
 	actual := "The quick brown fox jumped over that lazy dog"
 	if expected != actual {
@@ -20,7 +20,7 @@ func TestNotEqual(t *testing.T) {
 			th.NotEqualMsg(expected, actual))
 	}
 }
-func TestFieldTest(t *testing.T) {
+func ExampleFieldTest(t *testing.T) {
 	cases := []struct {
 		expected interface{}
 		actual   interface{}
