@@ -30,13 +30,6 @@ func TypeNotEqualMsg(expected, actual interface{}) string {
 	return fmt.Sprintln(ES_EXPECTED, eType, ES_GOT, aType)
 }
 
-// Takes a SQL string and arguments and prints them with ES_SQL and ES_ARGS
-func SqlArgsMsg(sql string, args []interface{}) string {
-	return fmt.Sprintln(
-		ES_SQL, sql,
-		ES_ARGS, args)
-}
-
 func UnexpectedErrMsg(err string) string {
 	return fmt.Sprintln(EM_UN_ERR, ES_ERR, err)
 }
