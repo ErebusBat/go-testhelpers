@@ -23,6 +23,10 @@ func NotEqualMsg(expected, actual interface{}) string {
 	return fmt.Sprintln(ES_EXPECTED, expected, ES_GOT, actual)
 }
 
+func ValueWasNil(expected interface{}) string {
+	return NotEqualMsg(expected, "(nil)")
+}
+
 // Same as NotEqualMsg, except that the type names will be printed instead
 func TypeNotEqualMsg(expected, actual interface{}) string {
 	eType := TypeName(expected)
