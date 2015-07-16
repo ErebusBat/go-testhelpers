@@ -1,6 +1,9 @@
 package testhelpers
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestTypeName(t *testing.T) {
 	cases := []struct {
@@ -21,6 +24,39 @@ func TestTypeName(t *testing.T) {
 		if actual != expected {
 			t.Error("TypeName()",
 				NotEqualMsg(expected, actual))
+		}
+	}
+}
+
+// mISlice - Make Interface{} Slice is a helper function to aid in constructing test cases
+func mISlice(a ...interface{}) []interface{} {
+	return a
+}
+
+func TestExtractFormatAndArgs(t *testing.T) {
+	cases := []struct {
+		name   string
+		ok     bool
+		format string
+		args   []interface{}
+		subj   []interface{}
+	}{
+		{name: "Should not be OK on nil subj", ok: false, subj: nil},
+		{"Zero args", true, "fmt", nil, mISlice("fmt")},
+		{"One arg", true, "fmt", mISlice(1), mISlice("fmt", 1)},
+		{"Two args", true, "fmt", mISlice(1, 2), mISlice("fmt", 1, 2)},
+	}
+
+	for idx, tcase := range cases {
+		aOk, aFmt, _ := ExtractFormatAndArgs(tcase.subj...)
+		msgBase := "Case #%d (%s), Variable %q Mismatch"
+		if aOk != tcase.ok {
+			t.Error(fmt.Sprintf(msgBase, idx, tcase.name, "OK"), NotEqualMsg(tcase.ok, aOk))
+		}
+		if aOk {
+			if aFmt != tcase.format {
+				t.Error(fmt.Sprintf(msgBase, idx, tcase.name, "Format"), NotEqualMsg(tcase.format, aFmt))
+			}
 		}
 	}
 }
