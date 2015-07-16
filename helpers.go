@@ -27,3 +27,16 @@ func ExtractFormatAndArgs(array ...interface{}) (ok bool, format string, args []
 	args = array[1:]
 	return
 }
+
+// Sprintf is a wrapper around ExtractFormatAndArgs and fmt.Sprintf
+// This allows functions to accept Sprintf style format and args as a
+// single variadic input and pass it to this Sprintf function.
+// If the input array is empty or otherwise invalid then an empty string
+// will be returned
+func Sprintf(array ...interface{}) string {
+	ok, f, a := ExtractFormatAndArgs(array...)
+	if !ok {
+		return ""
+	}
+	return fmt.Sprintf(f, a...)
+}

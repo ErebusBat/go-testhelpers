@@ -60,3 +60,23 @@ func TestExtractFormatAndArgs(t *testing.T) {
 		}
 	}
 }
+
+func TestSprintf(t *testing.T) {
+	cases := []struct {
+		name     string
+		args     []interface{}
+		expected string
+	}{
+		{"Zero args", mISlice("fmt"), "fmt"},
+		{"One arg", mISlice("fmt %d", 3), "fmt 3"},
+		{"Two args", mISlice("fmt %d %d", 3, -45), "fmt 3 -45"},
+	}
+
+	for idx, tcase := range cases {
+		actual := Sprintf(tcase.args...)
+		msgBase := fmt.Sprintf("Case #%d (%s)", idx, tcase.name)
+		if actual != tcase.expected {
+			t.Error(msgBase, NotEqualMsg(tcase.expected, actual))
+		}
+	}
+}
