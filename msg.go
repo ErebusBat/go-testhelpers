@@ -15,6 +15,7 @@ const (
 	ES_SQL      = "\n     sql:"
 	ES_ERR      = "\n     err:"
 	ES_VALUE    = "\n   value:"
+	ES_JSON     = "\n    json:"
 	ES_COUNT    = "\n   count:"
 )
 
