@@ -24,6 +24,13 @@ func NotEqualMsg(expected, actual interface{}) string {
 	return fmt.Sprintln(ES_EXPECTED, expected, ES_GOT, actual)
 }
 
+// NotEqualMsgDetail will output the expected/actual message with the detailed
+// outout of %#v
+func NotEqualMsgDetail(expected, actual interface{}) string {
+	return fmt.Sprintln(ES_EXPECTED, fmt.Sprintf("%#v", expected),
+		ES_GOT, fmt.Sprintf("%#v", actual))
+}
+
 func ValueWasNil(expected interface{}) string {
 	return NotEqualMsg(expected, "(nil)")
 }
